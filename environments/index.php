@@ -29,26 +29,36 @@
  * ```
  */
 return [
+    // 开发环境
     'Development' => [
-        'path' => 'dev',
+        'path' => 'dev', // 文件来源目录
+        // 设置可写（权限0777）目录
         'setWritable' => [
+            'api/runtime', // 新增api
+            'api/web/assets', // 新增api
             'backend/runtime',
             'backend/web/assets',
             'frontend/runtime',
             'frontend/web/assets',
         ],
+        // 设置可执行目录
         'setExecutable' => [
             'yii',
             'yii_test',
         ],
+        // 下列文件包含cookie验证码，需要生成随机串将cookie验证码包含进去
         'setCookieValidationKey' => [
+            'api/config/main-local.php', // 新增api
             'backend/config/main-local.php',
             'frontend/config/main-local.php',
         ],
     ],
+    // 生产环境
     'Production' => [
-        'path' => 'prod',
+        'path' => 'prod', // 文件来源目录
         'setWritable' => [
+            'api/runtime', // 新增api
+            'api/web/assets', // 新增api
             'backend/runtime',
             'backend/web/assets',
             'frontend/runtime',
@@ -58,6 +68,7 @@ return [
             'yii',
         ],
         'setCookieValidationKey' => [
+            'api/config/main-local.php', // 新增api
             'backend/config/main-local.php',
             'frontend/config/main-local.php',
         ],
